@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   pcl_ros
   roscpp
   sensor_msgs
+  visualization_msgs
+  geometry_msgs
 )
 
 
@@ -107,7 +109,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES lidar
-  CATKIN_DEPENDS pcl_conversions pcl_ros roscpp sensor_msgs
+  CATKIN_DEPENDS pcl_conversions pcl_ros roscpp sensor_msgs visualization_msgs
   #DEPENDS system_lib
 )
 
