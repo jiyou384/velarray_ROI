@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <sensor_msgs/point_cloud_conversion.h>
+#include <visualization_msgs/Marker.h>
 
 // PCL specific includes
 #include <pcl_conversions/pcl_conversions.h>
@@ -26,10 +27,12 @@ namespace ROIExample
     private:
         ros::NodeHandle nh_;
         ros::Subscriber sub_;
-        ros::Publisher pub_;
+        ros::Publisher pub_cloud_;
+        ros::Publisher pub_line_;
 
         void CloudCallback(const sensor_msgs::PointCloud2ConstPtr &input);
         void SetROI(const pcl::PointCloud<pcl::PointXYZ>::Ptr &input);
+        void VisROI();
     };
 }
 #endif // LIDAR_LIDAR_VLP16_SUBSCRIBER_H_
