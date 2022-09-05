@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(lidar_roi_example)
+project(lidar_roi_example CXX CUDA)
 
 find_package(catkin REQUIRED COMPONENTS
   pcl_conversions
@@ -23,7 +23,11 @@ include_directories(
   include ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(lidar_roi_example src/vlp16_roi.cpp src/main.cpp)
+add_executable(lidar_roi_example 
+src/angle_seg.cu
+src/vlp16_roi.cpp 
+src/main.cpp)
+
 add_dependencies(lidar_roi_example ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(

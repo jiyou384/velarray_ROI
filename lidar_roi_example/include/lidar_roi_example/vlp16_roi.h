@@ -1,6 +1,8 @@
 #ifndef LIDAR_LIDAR_VLP16_SUBSCRIBER_H_
 #define LIDAR_LIDAR_VLP16_SUBSCRIBER_H_
 
+#include "lidar_roi_example/angle_seg.h"
+
 #include <ros/ros.h>
 #include <iostream>
 #include <vector>
@@ -23,6 +25,7 @@ namespace ROIExample
     {
     public:
         VLP16ROI();
+        AngleSeg angleSeg;
 
     private:
         ros::NodeHandle nh_;

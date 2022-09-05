@@ -6,14 +6,21 @@ namespace ROIExample
   {
     sub_ = nh_.subscribe<sensor_msgs::PointCloud2>("/velodyne_points", 1, &VLP16ROI::CloudCallback, this);
     pub_cloud_ = nh_.advertise<sensor_msgs::PointCloud2>("/roi_cloud", 1);
-    pub_line_ = nh_.advertise<visualization_msgs::Marker>("/roi_box", 1);
+    // pub_line_ = nh_.advertise<visualization_msgs::Marker>("/roi_box", 1);
   }
 
   void VLP16ROI::CloudCallback(const sensor_msgs::PointCloud2ConstPtr &input)
   {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr lidar_cloud_(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ> *lidar_cloud_;
+    pcl::PointCloud<pcl::PointXYZ> *seg_cloud;
     pcl::fromROSMsg(*input, *lidar_cloud_);
-    SetROI(lidar_cloud_);
+    angleSeg.Init(lidar_cloud_);
+    seg_cloud = angleSeg.GetPC();
+
+    sensor_msgs::PointCloud2 msg_ob;
+    pcl::toROSMsg(*seg_cloud, msg_ob);
+    pub_cloud_.publish(msg_ob);
+    // SetROI(lidar_cloud_);
   }
 
   void VLP16ROI::SetROI(const pcl::PointCloud<pcl::PointXYZ>::Ptr &input)

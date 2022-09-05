@@ -1,0 +1,22 @@
+{
+  "configurations": [
+      {
+          "name": "ROS",
+          "includePath": [
+              "${workspaceFolder}/**",
+              "/usr/local/cuda/**",
+              "/usr/local/lib/**",
+              "/usr/lib/aarch64-linux-gnu/**",
+              "/opt/ros/melodic/include/**",
+              "/usr/include/**",
+              "${workspaceFolder}/../../devel/include/**"
+          ],
+          "defines": [],
+          "compilerPath": "/usr/bin/gcc",
+          "cStandard": "c11",
+          "cppStandard": "gnu++14",
+          "intelliSenseMode": "linux-gcc-arm64"
+      }
+  ],
+  "version": 4
+}
